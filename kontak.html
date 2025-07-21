@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="website icon" type="png" href="komputer.png">
+    <style>
+        /* ANIMASI MASUK HALAMAN */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .contact-container {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        /* STYLE UNTUK UCAPAN SELAMAT */
+        .greeting {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: #764ba2;
+            font-weight: 500;
+        }
+        
+        /* KODE UTAMA */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .contact-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .social-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .social-icon {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            perspective: 1000px;
+        }
+        
+        .social-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .social-icon-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            border-radius: 15px;
+        }
+        
+        .social-icon:hover .social-icon-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .social-icon-front, 
+        .social-icon-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-icon-front {
+            background: white;
+            color: #333;
+            font-size: 2rem;
+        }
+        
+        .social-icon-back {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: rotateY(180deg);
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        /* Warna khusus untuk setiap platform */
+        .github .social-icon-back { background: linear-gradient(45deg, #333, #6e5494); }
+        .linkedin .social-icon-back { background: linear-gradient(45deg, #0077b5, #00a0dc); }
+        .instagram .social-icon-back { background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); }
+        .twitter .social-icon-back { background: linear-gradient(45deg, #1da1f2, #009ff5); }
+        .whatsapp .social-icon-back { background: linear-gradient(45deg, #25D366, #128C7E); }
+        .facebook .social-icon-back { background: linear-gradient(45deg, #3b5998, #4867aa); }
+        
+        .contact-info {
+            margin-top: 50px;
+            color: #555;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        .email-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .email-link:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        /* Responsif */
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 30px 20px;
+            }
+            
+            .social-icon {
+                width: 70px;
+                height: 70px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .social-container {
+                gap: 15px;
+            }
+            
+            .social-icon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <div class="content-wrapper">
+            <h1>Hubungi Saya</h1>
+            <div id="greeting" class="greeting"></div>
+            <p>Silakan hubungi saya melalui media sosial berikut:</p>
+            
+            <div class="social-container">
+                <!-- Github -->
+                <div class="social-icon github">
+                    <a href="https://github.com/riz456" class="social-link" target="_blank">
+                        <div class="social-icon-inner">
+                            <div class="social-icon-front">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="social-icon-back">
+                                GitHub
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Instagram -->
+                <div class="social-icon instagram">
+                    <a href="https://instagram.com/riz_456d" class="social-link" target="_blank">
+                        <div class="social-icon-inner">
+                            <div class="social-icon-front">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class="social-icon-back">
+                                Instagram
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Twitter -->
+                <div class="social-icon twitter">
+                    <a href="404.html" class="social-link" target="_blank">
+                        <div class="social-icon-inner">
+                            <div class="social-icon-front">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                            <div class="social-icon-back">
+                                Twitter
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- WhatsApp -->
+                <div class="social-icon whatsapp">
+                    <a href="https://wa.me/6282326744030" class="social-link" target="_blank">
+                        <div class="social-icon-inner">
+                            <div class="social-icon-front">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="social-icon-back">
+                                WhatsApp
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Facebook -->
+                <div class="social-icon facebook">
+                    <a href="https://facebook.com/Rizky Mustafa Afrino" class="social-link" target="_blank">
+                        <div class="social-icon-inner">
+                            <div class="social-icon-front">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div class="social-icon-back">
+                                Facebook
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <p>Atau kirim email ke:</p>
+                <a href="mailto:bambamstudio04@gmail.com" class="email-link">bambamstudio04@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk menampilkan ucapan sesuai waktu
+        function showGreeting() {
+            const hour = new Date().getHours();
+            const greetingElement = document.getElementById('greeting');
+            let greeting;
+            
+            if (hour >= 5 && hour < 11) {
+                greeting = 'Selamat Pagi!';
+            } else if (hour >= 11 && hour < 15) {
+                greeting = 'Selamat Siang!';
+            } else if (hour >= 15 && hour < 19) {
+                greeting = 'Selamat Sore!';
+            } else {
+                greeting = 'Selamat Malam!';
+            }
+            
+            greetingElement.textContent = greeting;
+        }
+        
+        // Panggil fungsi saat halaman dimuat
+        window.onload = showGreeting;
+    </script>
+</body>
+</html>
